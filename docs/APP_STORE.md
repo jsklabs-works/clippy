@@ -8,11 +8,11 @@
       name as the seller.
 - [ ] In **Certificates, Identifiers & Profiles**, register an App ID that
       matches `PRODUCT_BUNDLE_IDENTIFIER` in `project.yml`
-      (`com.jsklabs.ClipStack`). Xcode's automatic signing can also create it.
+      (`com.jsklabs.Clippy`). Xcode's automatic signing can also create it.
 - [ ] Put your Team ID in `DEVELOPMENT_TEAM` in `project.yml`.
 - [ ] In [App Store Connect](https://appstoreconnect.apple.com), go to
       **My Apps › + › New App**, choose the macOS platform, pick the bundle
-      ID, and reserve the name. Names are globally unique, so if "ClipStack"
+      ID, and reserve the name. Names are globally unique, so if "Clippy"
       is taken, change `CFBundleDisplayName` and the product name to match.
 
 ## 2. Requirements this project already meets
@@ -40,7 +40,7 @@ sometimes question it. To keep the risk down:
   how the code works now).
 - In **App Review Information › Notes**, add something like:
 
-  > ClipStack is a clipboard history manager. Accessibility access is
+  > Clippy is a clipboard history manager. Accessibility access is
   > optional and is requested only if the user enables "Paste automatically"
   > in Settings. It is used solely to send ⌘V to the frontmost app after the
   > user picks an item from their history. To test: copy a few items, press
@@ -54,6 +54,15 @@ The toggle and prompt are confined to `SettingsView` and `PasteService`.
 over apps that read the pasteboard. Test on the current macOS release and on
 any beta before submitting, and if the system asks the user for permission,
 show your own explanation first (for example in an onboarding window).
+
+**The name "Clippy".** Many people know it as Microsoft's Office
+assistant, and Microsoft has reused it in recent products. App Review can
+reject names that suggest an association with another company (guidelines
+4.1 and 5.2), and a trademark holder can file a complaint later. To lower
+the risk, avoid paperclip artwork and any reference to Microsoft or Office,
+and consider a distinct store name such as "Clippy – Clipboard History" or a
+different name altogether. The display name lives in `CFBundleDisplayName`
+in `project.yml`, so changing it later is a small edit.
 
 **Maccy.** Maccy is MIT-licensed, and this project is an original
 implementation. Don't use Maccy's name, icon, or screenshots in your listing.

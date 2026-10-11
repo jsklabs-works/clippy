@@ -17,7 +17,7 @@ struct OnboardingView: View {
                     .resizable()
                     .frame(width: 64, height: 64)
                 VStack(alignment: .leading, spacing: 4) {
-                    Text("Welcome to ClipStack").font(.title2.bold())
+                    Text("Welcome to Clippy").font(.title2.bold())
                     Text("Everything you copy, one shortcut away.")
                         .foregroundStyle(.secondary)
                 }
@@ -35,7 +35,7 @@ struct OnboardingView: View {
 
             step(icon: "arrow.down.doc",
                  title: "Paste automatically (optional)",
-                 detail: "Without this, choosing an item copies it and you press ⌘V yourself. With it, ClipStack pastes for you, which needs Accessibility access.") {
+                 detail: "Without this, choosing an item copies it and you press ⌘V yourself. With it, Clippy pastes for you, which needs Accessibility access.") {
                 Toggle("Paste automatically", isOn: $autoPaste)
                     .onChange(of: autoPaste) { _, value in
                         if value && !PasteService.canAutoPaste { PasteService.requestAccessibility() }

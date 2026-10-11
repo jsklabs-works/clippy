@@ -8,7 +8,7 @@ import ClipCore
 enum PasteService {
     /// Added to everything we write so `ClipboardMonitor` doesn't record our
     /// own writes as new copies.
-    nonisolated static let ownMarkerType = "com.jsklabs.ClipStack.internal"
+    nonisolated static let ownMarkerType = "com.jsklabs.Clippy.internal"
 
     static func copy(_ item: HistoryItem, plainText: Bool) {
         let pasteboard = NSPasteboard.general

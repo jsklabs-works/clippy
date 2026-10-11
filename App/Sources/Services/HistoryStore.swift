@@ -14,7 +14,7 @@ final class HistoryStore {
         } catch {
             // A corrupt store shouldn't brick the app: fall back to an
             // in-memory history for this launch.
-            NSLog("ClipStack: failed to open history store: \(error)")
+            NSLog("Clippy: failed to open history store: \(error)")
             container = try! ModelContainer(for: HistoryItem.self, configurations: ModelConfiguration(isStoredInMemoryOnly: true))
         }
     }
@@ -74,7 +74,7 @@ final class HistoryStore {
         do {
             try context.save()
         } catch {
-            NSLog("ClipStack: failed to save history: \(error)")
+            NSLog("Clippy: failed to save history: \(error)")
         }
     }
 }

@@ -14,7 +14,7 @@ enum LaunchAtLogin {
                     try SMAppService.mainApp.unregister()
                 }
             } catch {
-                NSLog("ClipStack: failed to update login item: \(error)")
+                NSLog("Clippy: failed to update login item: \(error)")
             }
         }
     }

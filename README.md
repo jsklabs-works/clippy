@@ -1,10 +1,11 @@
-# ClipStack
+# Clippy
 
 A fast, keyboard-driven clipboard history manager for macOS, in the spirit of
 [Maccy](https://github.com/p0deje/Maccy), built for the Mac App Store.
 
-> "ClipStack" is a working name. Check that it's free in App Store Connect
-> before you commit to it (see [docs/APP_STORE.md](docs/APP_STORE.md)).
+> Before you submit, check that "Clippy" is available in App Store Connect
+> and read the naming note in [docs/APP_STORE.md](docs/APP_STORE.md): the
+> name is closely associated with Microsoft's Office assistant.
 
 ## Features
 
@@ -33,11 +34,11 @@ A fast, keyboard-driven clipboard history manager for macOS, in the spirit of
 ## Build and run
 
 ```sh
-xcodegen          # generates ClipStack.xcodeproj from project.yml
-open ClipStack.xcodeproj
+xcodegen          # generates Clippy.xcodeproj from project.yml
+open Clippy.xcodeproj
 ```
 
-In Xcode, select the **ClipStack** target, open **Signing & Capabilities**,
+In Xcode, select the **Clippy** target, open **Signing & Capabilities**,
 choose your team, then press ⌘R. A clipboard icon appears in the menu bar.
 
 The `.xcodeproj` is generated and git-ignored, so change `project.yml` and
@@ -55,7 +56,7 @@ ClipCore/                    Swift package with no AppKit dependency, tested on 
     FuzzyMatcher.swift       Search ranking
     HistoryRules.swift       History trimming and row titles
 App/Sources/
-  ClipStackApp.swift         Entry point
+  ClippyApp.swift            Entry point
   AppDelegate.swift          Menu bar item, hotkey, settings window
   Models/                    SwiftData model and preferences
   Services/                  Pasteboard polling, storage, paste, launch at login
