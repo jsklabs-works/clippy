@@ -10,6 +10,7 @@ enum Preferences {
     static let pastePlainTextKey = "pastePlainText"
     static let ignoredAppsKey = "ignoredApps"
     static let isPausedKey = "isPaused"
+    static let hasCompletedOnboardingKey = "hasCompletedOnboarding"
 
     static let defaultHistorySize = 200
 
@@ -20,6 +21,7 @@ enum Preferences {
             pastePlainTextKey: false,
             ignoredAppsKey: "",
             isPausedKey: false,
+            hasCompletedOnboardingKey: false,
         ])
     }
 
@@ -27,6 +29,7 @@ enum Preferences {
     static var autoPaste: Bool { UserDefaults.standard.bool(forKey: autoPasteKey) }
     static var pastePlainText: Bool { UserDefaults.standard.bool(forKey: pastePlainTextKey) }
     static var isPaused: Bool { UserDefaults.standard.bool(forKey: isPausedKey) }
+    static var hasCompletedOnboarding: Bool { UserDefaults.standard.bool(forKey: hasCompletedOnboardingKey) }
 
     /// User-added bundle IDs, one per line.
     static var ignoredApps: Set<String> {

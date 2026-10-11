@@ -18,6 +18,8 @@ A fast, keyboard-driven clipboard history manager for macOS, in the spirit of
 - Ignores password managers and anything marked concealed or transient
   ([nspasteboard.org](http://nspasteboard.org) conventions)
 - You can pause recording, block extra apps, and set the history size
+- A first-launch welcome window covering the menu bar icon, the shortcut,
+  auto-paste, and launch at login
 - Launch at login, off by default as App Store rules require
 - History is stored locally with SwiftData. There is no network access and
   no analytics.
@@ -58,8 +60,9 @@ App/Sources/
   Models/                    SwiftData model and preferences
   Services/                  Pasteboard polling, storage, paste, launch at login
   Popup/                     Floating search panel and list UI
-  Settings/                  Settings window
-App/Resources/               Asset catalog and privacy manifest
+  Settings/                  Settings and first-launch welcome windows
+App/Resources/               Asset catalog (app icon) and privacy manifest
+scripts/make_icon.py         Draws the placeholder icon at every size
 docs/APP_STORE.md            Submission checklist
 ```
 
@@ -86,9 +89,9 @@ app on a macOS runner.
 
 ## To do before release
 
-- [ ] App icon (1024×1024 master plus the Mac sizes in `AppIcon.appiconset`)
+- [ ] Final app icon. The current one is a placeholder drawn by
+      `scripts/make_icon.py` (edit it and re-run, or drop in designed PNGs).
 - [ ] Final name and bundle ID (`project.yml`: `PRODUCT_BUNDLE_IDENTIFIER`)
 - [ ] Manual QA pass on macOS 14, 15 and the current release, especially
       the arrow keys and ⏎ in the search field, and auto-paste in a few apps
       (Safari, Notes, VS Code, Terminal, Slack)
-- [ ] Optional onboarding window explaining the hotkey and Accessibility

@@ -11,6 +11,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     }
     private var statusItem: NSStatusItem?
     private var settingsWindow: NSWindow?
+    private var onboardingWindow: NSWindow?
 
     func applicationDidFinishLaunching(_ notification: Notification) {
         Preferences.registerDefaults()
@@ -19,6 +20,9 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
             self?.popup.toggle()
         }
         monitor.start()
+        if !Preferences.hasCompletedOnboarding {
+            showOnboarding()
+        }
     }
 
     // MARK: Menu bar
@@ -71,7 +75,27 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         store.clear(includingPinned: false)
     }
 
-    // MARK: Settings
+    // MARK: Windows
+
+    /// Marked as seen up front, so closing the window with its close button
+    /// also counts and it never nags on later launches.
+    private func showOnboarding() {
+        UserDefaults.standard.set(true, forKey: Preferences.hasCompletedOnboardingKey)
+        let window = NSWindow(contentViewController: NSHostingController(
+            rootView: OnboardingView { [weak self] in
+                self?.onboardingWindow?.close()
+                self?.onboardingWindow = nil
+            }
+        ))
+        window.title = ""
+        window.styleMask = [.titled, .closable, .fullSizeContentView]
+        window.titlebarAppearsTransparent = true
+        window.isReleasedWhenClosed = false
+        window.center()
+        onboardingWindow = window
+        NSApp.activate(ignoringOtherApps: true)
+        window.makeKeyAndOrderFront(nil)
+    }
 
     /// A menu-bar-only app has no app menu, and SwiftUI's Settings scene
     /// can't be opened reliably from AppKit code, so the window is managed
